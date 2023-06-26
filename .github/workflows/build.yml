@@ -32,5 +32,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PANDORALIBTOKEN }}
           BRANCH: gh-pages
           FOLDER: docs/.vitepress/dist
-          GIT_CONFIG_NAME: vue-components-lib-seed
+          GIT_CONFIG_NAME: pandora-lib
           COMMIT_MESSAGE: website deploy
