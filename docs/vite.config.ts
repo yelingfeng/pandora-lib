@@ -5,7 +5,7 @@ import { MarkdownTransform } from './.vitepress/plugins/md-transform'
 export default {
   resolve: {
     alias: {
-      'my-lib/': `${path.resolve(
+      'pandora-lib/': `${path.resolve(
         __dirname,
         '../dist/es'
       )}/`,

@@ -7,7 +7,7 @@ sidebarDepth: 2
 ## use
 
 ```javascript
-import { Button } from 'my-lib'
+import { Button } from 'pandora-lib'
 
 Vue.creatApp().use(Button.name, Button)
 ```

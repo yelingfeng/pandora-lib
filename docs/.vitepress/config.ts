@@ -33,12 +33,12 @@ const enComponentDocs = componentDocs.map((item) => ({
   link: '/en-US/components/' + item.link,
 }))
 
-const REPO_BASE_URL = '/vue-components-lib-seed/'
+const REPO_BASE_URL = '/pandora-lib/'
 
 export default defineConfig({
   base: process.env.VERCEL_BUILD ? '/' : REPO_BASE_URL,
-  title: 'VueCompsLibSeed',
-  description: 'vue-components-lib-seed doc',
+  title: 'Pandoralib',
+  description: 'pandora-lib doc',
   head: [
     [
       'link',

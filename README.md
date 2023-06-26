@@ -31,7 +31,7 @@ power by vitepress
 
 ### Checklist
 
-- [ ] Replace all `my-lib` words with your libary name. Just search `my-lib` and replace them in VScode
+- [ ] Replace all `pandora-lib` words with your libary name. Just search `pandora-lib` and replace them in VScode
   - `.gitignore`
   - `package.json`
   - `vite.config.ts`

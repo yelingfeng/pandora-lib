@@ -154,4 +154,8 @@ const copyHandler = () => {
 .fade-leave-active {
   transition: opacity 250ms linear;
 }
+.demo-charts {
+  width: 500px;
+  height: 400px;
+}
 </style>

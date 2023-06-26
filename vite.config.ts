@@ -33,7 +33,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      'my-lib/':
+      'pandora-lib/':
         process.env.NODE_ENV !== 'preview'
           ? `${path.resolve(__dirname, './src/packages')}/`
           : `${path.resolve(__dirname, './dist/es')}/`,

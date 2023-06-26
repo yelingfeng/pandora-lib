@@ -3,7 +3,7 @@ import Demo from '../components/Demo.vue'
 import DemoWrapper from '../components/DemoWrapper.vue'
 import 'uno.css'
 import '@unocss/reset/tailwind.css'
-import 'my-lib/my-lib.min.css'
+import 'pandora-lib/pandora-lib.min.css'
 
 import type { Theme } from 'vitepress'
 

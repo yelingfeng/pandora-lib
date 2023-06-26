@@ -1,14 +1,10 @@
-<template>
-  <h3>Home Page</h3>
-  <img alt="Vue logo" src="../assets/logo.png" />
-  <div style="height: 400px; width: 500px">
-    <Charts :options="opt"></Charts>
-  </div>
-</template>
-<script lang="ts" setup>
-import Charts from 'pandora-lib/charts/index.vue'
+<script lang="ts">
+export default { name: 'ChartsDemo', title: '基本' }
+</script>
+<script setup lang="ts">
+import Charts from 'pandora-lib/charts'
 import { ref } from 'vue'
-let opt: any = {}
+const opt: any = ref({})
 const charts: any = ref(null)
 const bgColor = '#fff'
 const title = '总量'
@@ -74,7 +70,7 @@ const total = echartData.reduce((a, b: any) => {
   return a + b.value * 1
 }, 0)
 
-opt = {
+opt.value = {
   backgroundColor: bgColor,
   color,
   tooltip: {
@@ -177,3 +173,9 @@ opt = {
   ],
 }
 </script>
+
+<template>
+  <div class="demo-charts">
+    <Charts :options="opt"></Charts>
+  </div>
+</template>

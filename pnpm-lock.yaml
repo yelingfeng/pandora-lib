@@ -8,6 +8,7 @@ specifiers:
   '@rollup/plugin-alias': ^3.1.2
   '@rollup/plugin-node-resolve': ^13.0.0
   '@rollup/plugin-replace': ^2.4.2
+  '@types/echarts': ^4.9.18
   '@types/escape-html': ^1.0.2
   '@types/glob': ^7.2.0
   '@types/jest': ^26.0.23
@@ -36,6 +37,7 @@ specifiers:
   commitizen: ^4.2.4
   cross-env: ^7.0.3
   cz-conventional-changelog: ^3.3.0
+  echarts: ^5.4.2
   es-module-lexer: ^0.4.1
   esbuild: ^0.13.15
   esbuild-plugin-vue: ^0.1.2
@@ -86,6 +88,7 @@ specifiers:
 
 dependencies:
   '@unocss/reset': 0.35.2
+  echarts: 5.4.2
 
 devDependencies:
   '@babel/plugin-proposal-class-properties': 7.16.7
@@ -95,6 +98,7 @@ devDependencies:
   '@rollup/plugin-alias': 3.1.9_rollup@2.71.1
   '@rollup/plugin-node-resolve': 13.3.0_rollup@2.71.1
   '@rollup/plugin-replace': 2.4.2_rollup@2.71.1
+  '@types/echarts': 4.9.18
   '@types/escape-html': 1.0.2
   '@types/glob': 7.2.0
   '@types/jest': 26.0.24
@@ -2102,6 +2106,12 @@ packages:
       '@babel/types': 7.17.10
     dev: true
 
+  /@types/echarts/4.9.18:
+    resolution: {integrity: sha512-Qav4M1i1qmPemMywMnDGIbvIBB/9pdrDKLI1dyMho4Yz/ldCB3ry2zGeH0UhAhgmaoPgwYrCDo8xd1UeByz+rw==}
+    dependencies:
+      '@types/zrender': 4.0.3
+    dev: true
+
   /@types/escape-html/1.0.2:
     resolution: {integrity: sha512-gaBLT8pdcexFztLSPRtriHeXY/Kn4907uOCZ4Q3lncFBkheAWOuNt53ypsF8szgxbEJ513UeBzcf4utN0EzEwA==}
     dev: true
@@ -2272,6 +2282,10 @@ packages:
     resolution: {integrity: sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==}
     dependencies:
       '@types/yargs-parser': 21.0.0
+    dev: true
+
+  /@types/zrender/4.0.3:
+    resolution: {integrity: sha512-EPI269lkHNsObwILJ1k1z7znLjKyePuWRy/XKK0shSGpBb9cIX307arcwJV4+2NeZj5wEjN06r4D8yFv7sI06g==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/4.33.0_lzzr7k3tjtqil7aczuhmzzwame:
@@ -4334,6 +4348,13 @@ packages:
     dependencies:
       readable-stream: 2.3.7
     dev: true
+
+  /echarts/5.4.2:
+    resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.4.3
+    dev: false
 
   /electron-to-chromium/1.4.131:
     resolution: {integrity: sha512-oi3YPmaP87hiHn0c4ePB67tXaF+ldGhxvZnT19tW9zX6/Ej+pLN0Afja5rQ6S+TND7I9EuwQTT8JYn1k7R7rrw==}
@@ -9896,6 +9917,10 @@ packages:
     resolution: {integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==}
     dev: true
 
+  /tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: false
+
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
@@ -10739,3 +10764,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zrender/5.4.3:
+    resolution: {integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==}
+    dependencies:
+      tslib: 2.3.0
+    dev: false

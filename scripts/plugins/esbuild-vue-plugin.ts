@@ -67,14 +67,17 @@ export default (): Plugin => {
         }
       )
       /**
-       * replace my-lib
+       * replace pandora-lib
        */
-      build.onResolve({ filter: /^my-lib\/.*/ }, (args) => {
-        return {
-          path: args.path.replace('my-lib/', '../'),
-          external: true,
+      build.onResolve(
+        { filter: /^pandora-lib\/.*/ },
+        (args) => {
+          return {
+            path: args.path.replace('pandora-lib/', '../'),
+            external: true,
+          }
         }
-      })
+      )
 
       build.onLoad(
         { filter: /\.vue$/, namespace: 'vue' },
