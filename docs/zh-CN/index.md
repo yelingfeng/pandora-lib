@@ -1,13 +1,13 @@
 ---
 layout: home
 
-title: Pandoralibs
+title: PandoraLibs
 titleTemplate: Vite & Vue powered static site generator
 
 hero:
-  name: Pandora-libs
-  text: A vue3.0 components library for Pandora
-  tagline: Vue3.0 组件库的次佳实践.
+  name: Pandora-lib
+  text: Pandora for vue3  
+  tagline: 业务封装组件 包括echarts、elementUI.
   actions:
     - theme: brand
       text: 开始使用

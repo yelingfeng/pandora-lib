@@ -23,8 +23,7 @@
     "node": ">=14.16.1"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "main": "dist/lib/pandora-lib.umd.js",
   "module": "dist/es/pandora-lib.esm.js",

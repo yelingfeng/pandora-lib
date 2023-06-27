@@ -37,7 +37,7 @@ const REPO_BASE_URL = '/pandora-lib/'
 
 export default defineConfig({
   base: process.env.VERCEL_BUILD ? '/' : REPO_BASE_URL,
-  title: 'Pandoralib',
+  title: 'PandoraLib',
   description: 'pandora-lib doc',
   head: [
     [
@@ -130,21 +130,20 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern:
-        'https://github.com/zouhangwithsweet/vue-components-lib-seed/',
+      pattern: 'https://yelingfeng.github.io/pandora-lib//',
       text: 'Edit this page on GitHub',
     },
 
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/zouhangwithsweet/vue-components-lib-seed',
+        link: 'https://yelingfeng.github.io/pandora-lib/',
       },
     ],
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Zou Hang',
+      copyright: 'Copyright © 2023 present yelingfeng',
     },
   },
   markdown: {

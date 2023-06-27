@@ -1,50 +1,22 @@
-# A Vue3 UI library template
+# 快速开始
 
-[![GitHub stars](https://img.shields.io/github/stars/zouhangwithsweet/vue-components-lib-seed)](https://github.com/zouhangwithsweet/vue-components-lib-seed/stargazers)
+<!--以下内容为 pandora-lib 介绍，可以直接删除-->
+## pandora-lib 介绍
 
-[中文文档](https://github.com/zouhangwithsweet/vue-components-lib-seed/blob/master/README.zh-CN.md)
+pandora 组件库
 
-Help you quickly create a component library.
+## 文档
 
-- :rocket: dev with `Vite`
-- :airplane: build with `esbuild`
-- :helicopter: generate types with `ts-morph`
+- [文档示例](https://yelingfeng.github.io/pandora-lib/)
 
-## Docs
 
-power by vitepress
-
-- [doc example](https://vuecomponent-seed.vercel.app/)
-
-## Feature
-
-- :rainbow: Speedy dev & build
-- :fireworks: Customize friendly
-- :pencil: More beautiful doc, support `Chinese` and `English`. Support `Dark Mode` by [vueuse](https://github.com/vueuse/vueuse)
-- :lollipop: Rich scripts, inspired by [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) & [vue-dts-gen](https://github.com/egoist/vue-dts-gen)
-- :yum: Type friendly
-- :truck: `ESM` & `CJS` product
-
-## How to use
-
-[Generate a repository by vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed/generate)
-
-### Checklist
-
-- [ ] Replace all `pandora-lib` words with your libary name. Just search `pandora-lib` and replace them in VScode
-  - `.gitignore`
-  - `package.json`
-  - `vite.config.ts`
-  - `.vitepress`
-  - `scripts` ...
-
-### Install
+### 安装
 
 ```bash
 yarn
 ```
 
-### Dev
+### 开发模式
 
 > Benefited from  [`vite-plugin-pages`](https://github.com/hannoeru/vite-plugin-pages), the `src/pages/index.vue` is the entry page for development. You can visit `/[component-name]/demo` to check component, like `http://localhost:3000/#/button/demo`.
 
@@ -52,41 +24,41 @@ yarn
 yarn dev
 ```
 
-### Build
+### 构建
 
 ```bash
 yarn build
 ```
 
-### Test
+### 测试
 
 ```bash
 yarn test
 ```
 
-### Generate entry point
+### 生成入口文件
 
-> The entry file is the `input` option for rollup.
+> 入口文件是 rollup 的 `input` 选项。
 
 ```bash
 yarn gen-entry
 ```
 
-### Generate Component
+### 生成一个新的组件
 
-> A component's name is required for this command.
+> 您必须为此命令指定组件名称。
 
 ```bash
 yarn gen [component\'s name]
 ```
 
-### Generate dts
+### 生成 d.ts 文件
 
 ```bash
 npx esno ./scripts/gen-dts.ts
 ```
 
-### Release
+### 发布你的组件库
 
 > This command will add git tag、generate changelog. You can test your lib with argument `--dry`
 
@@ -94,65 +66,33 @@ npx esno ./scripts/gen-dts.ts
 yarn release [--dry]
 ```
 
-## Build Docs
+## 文档的构建
 
 > :exclamation: Noted: you should run `yarn build:lib` before run this command. Because the docs need the build bundle.
 
-### Docs dev
+### 开发文档
 
 ```bash
 yarn docs:dev
 ```
 
-### Docs build
+### 构建文档
 
 ```bash
 yarn docs:build
 ```
 
-### Docs deploy
+#
 
-Here is a git [action](https://github.com/zouhangwithsweet/vue-components-lib-seed/blob/master/.github/workflows/build.yml). When you push the code to the `master` branch, the document will be automatically deployed on `gh-pages` branch.
-Then you can set the Github Pages's source on the `gh-pages` branch.
-
-### Use demo code in doc
-
-Take button as an example.
-
-In `button.md`, insert the following code
-
-```markdown
-:::demo  
-src/packages/button/demo/demo0.vue  
-:::
-- or
-:::demo  
-src/packages/button/demo/demo*.vue  
-:::
-```
-
-~~There is a global component [`Demos`](https://github.com/zouhangwithsweet/fisand-doc/blob/feat_fisand_doc/src/client/app/components/Demos.vue) to display all demos.
-This is currently the only way to show demo. [More info](https://github.com/zouhangwithsweet/fisand-doc/blob/feat_fisand_doc/src/node/markdown/plugins/demo.ts).~~
-
-### Custom doc style
-
-You can add the `class` in frontmatter, then the `<Content>` would inherit the `class`. Of course, the `unocss` can be used here.
-
-```markdown
----
-class: 'custom-class'
----
-```
-
-## Recommended IDE Setup
+## 推荐编辑器配置
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar).
 
-### If Using `<script setup>`
+### 如果你使用 `<script setup>`
 
 [`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
 
-## Credits
+## 此项目离不开以下开源项目
 
 - [unplugin-vue](https://github.com/sxzz/unplugin-vue)
 - [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue)
@@ -162,7 +102,3 @@ class: 'custom-class'
 - [unocss](https://github.com/unocss/unocss)
 - [Element Plus](https://github.com/element-plus/element-plus)
 
-## Thanks
-
-| [<img src="https://avatars.githubusercontent.com/u/73626725?v=4" width="75px;"/><br/>eeeeelle<br/> <sub>:writing_hand:release-script</sub>](https://github.com/eeeeelle) |
-| :---: |

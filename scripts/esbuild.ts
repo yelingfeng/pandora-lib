@@ -27,11 +27,17 @@ async function run(options?: BuildOptions) {
         sourceMap: false,
         style: {
           preprocessLang: 'styl',
-          // preprocessOptions: {
-          //   stylus: {
-          //     additionalData: `@import '${process.cwd()}/src/styles/index.styl'`,
-          //   },
-          // },
+          preprocessOptions: {
+            less: {
+              modifyVars: {
+                hack: `true; @import (reference) "${resolve(
+                  'src/style/variables.less'
+                )}";`,
+              },
+              math: 'strict',
+              javascriptEnabled: true,
+            },
+          },
         },
       }),
     ],
@@ -41,6 +47,7 @@ async function run(options?: BuildOptions) {
       'pandora-lib/*',
       '@vue/*',
       '@better-scroll/*',
+      'echarts',
       'jpeg-js',
     ],
     format: 'esm',
