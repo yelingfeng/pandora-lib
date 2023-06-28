@@ -1,7 +1,8 @@
-# 快速开始
 
-<!--以下内容为 pandora-lib 介绍，可以直接删除-->
 ## pandora-lib 介绍
+
+![gitub](https://img.shields.io/github/package-json/v/yelingfeng/pandora-lib)
+![npm](https://img.shields.io/npm/v/pandora-lib)
 
 pandora 组件库
 
