@@ -36,8 +36,7 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
+<style>
 .vpandora-charts-container {
   position: relative;
   width: 100%;

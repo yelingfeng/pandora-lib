@@ -125,5 +125,8 @@
   "dependencies": {
     "@unocss/reset": "^0.35.2",
     "echarts": "^5.4.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

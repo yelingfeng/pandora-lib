@@ -26,18 +26,18 @@ async function run(options?: BuildOptions) {
       vue({
         sourceMap: false,
         style: {
-          preprocessLang: 'styl',
-          preprocessOptions: {
-            less: {
-              modifyVars: {
-                hack: `true; @import (reference) "${resolve(
-                  'src/style/variables.less'
-                )}";`,
-              },
-              math: 'strict',
-              javascriptEnabled: true,
-            },
-          },
+          // preprocessLang: 'less',
+          // preprocessOptions: {
+          //   less: {
+          //     modifyVars: {
+          //       hack: `true; @import (reference) "${resolve(
+          //         'src/style/variables.less'
+          //       )}";`,
+          //     },
+          //     math: 'strict',
+          //     javascriptEnabled: true,
+          //   },
+          // },
         },
       }),
     ],

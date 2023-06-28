@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import Charts from 'pandora-lib/charts/index.vue'
+import { Charts } from 'pandora-lib/charts'
 import { ref } from 'vue'
 let opt: any = {}
 const charts: any = ref(null)
