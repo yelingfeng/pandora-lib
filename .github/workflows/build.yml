@@ -17,17 +17,12 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16.13.2'
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: build
         run: pnpm build
-
-      # publish  
-      - name: Publish NPM
-        run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build docs
         run: pnpm docs:build
@@ -40,3 +35,9 @@ jobs:
           FOLDER: docs/.vitepress/dist
           GIT_CONFIG_NAME: pandora-lib
           COMMIT_MESSAGE: website deploy
+          
+      - name: NPM PUBLISH
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
