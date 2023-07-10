@@ -13,6 +13,7 @@ specifiers:
   '@types/glob': ^7.2.0
   '@types/jest': ^26.0.23
   '@types/klaw-sync': ^6.0.0
+  '@types/lodash-es': ^4.17.7
   '@types/markdown-it': ^12.2.3
   '@types/markdown-it-container': ^2.0.5
   '@types/minimist': ^1.2.2
@@ -53,6 +54,7 @@ specifiers:
   jpeg-js: ^0.4.3
   klaw-sync: ^6.0.0
   lint-staged: '10'
+  lodash-es: ^4.17.21
   markdown-it: ^13.0.1
   markdown-it-container: ^3.0.0
   minimist: ^1.2.6
@@ -87,8 +89,10 @@ specifiers:
   vue-tsc: ^0.0.24
 
 dependencies:
+  '@types/lodash-es': 4.17.7
   '@unocss/reset': 0.35.2
   echarts: 5.4.2
+  lodash-es: 4.17.21
 
 devDependencies:
   '@babel/plugin-proposal-class-properties': 7.16.7
@@ -2194,6 +2198,16 @@ packages:
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
     dev: true
+
+  /@types/lodash-es/4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: false
+
+  /@types/lodash/4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
+    dev: false
 
   /@types/markdown-it-container/2.0.5:
     resolution: {integrity: sha512-8v5jIC5gcCUv+JcD0DExwNBkoKC0kLB4acensF0NoNlTIcXmQxF3RDjzAdIW82sXSoR+n772ePguxIWlq2ELvA==}
@@ -7200,6 +7214,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha1-soqmKIorn8ZRA1x3EfZathkDMaY=}

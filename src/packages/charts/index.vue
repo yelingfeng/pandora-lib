@@ -6,29 +6,44 @@
 
 <script lang="ts">
 import { useECharts } from './hooks/useEcharts'
+import { build } from './utils/core'
 import {
   onMounted,
   ref,
   Ref,
   isRef,
   unref,
+  watch,
+  PropType,
+  toRefs,
   defineComponent,
 } from 'vue'
 export default defineComponent({
   name: 'Charts',
   props: {
-    options: Object,
+    data: {
+      type: Array as PropType<any[]>,
+      default: () => [],
+    },
+    options: {
+      type: Object,
+      required: true,
+    },
   },
   setup(props) {
     const chartRef = ref<HTMLDivElement | null>(null)
+    const { data, options } = toRefs(props)
     const { setOptions } = useECharts(
       chartRef as Ref<HTMLDivElement>
     )
-    const opts: any = isRef(props.options)
-      ? unref(props.options)
-      : props.options
     onMounted(() => {
-      setOptions(opts)
+      setOptions(build(data.value))
+    })
+
+    watch(data, function (newval, oldval) {
+      //if (newval && newval.length) {
+      setOptions(build(newval))
+      //}
     })
     return {
       chartRef,
