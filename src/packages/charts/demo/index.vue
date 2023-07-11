@@ -1,7 +1,7 @@
 <template>
   <div class="mylib-nav">
     <p class="home" @click="$router.push('/')">
-      <mylib-icon name="home" size="lg"></mylib-icon>
+      <mylib-icon name="home" size="lg" />
     </p>
     <p class="name">Charts</p>
     <p class="name-zh"><del>组件中文名称</del></p>
@@ -15,13 +15,13 @@
       <div
         class="mylib-example-title"
         v-text="demo.title"
-      ></div>
+      />
       <div
         class="mylib-example-describe"
         v-text="demo.describe"
-      ></div>
+      />
       <div class="mylib-example-content">
-        <component :is="demo"></component>
+        <component :is="demo" />
       </div>
     </section>
   </div>

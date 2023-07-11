@@ -3,10 +3,15 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["esnext", "dom"],
@@ -14,15 +19,18 @@
       "vite/client",
       "@types/jest",
       "@types/node",
-      "./src/global.d.ts"
+      "element-plus/global",
+      "vitest"
     ],
+    "baseUrl": ".",
     // "declaration": false,
     // "declarationDir": "dist/types",
     "outDir": "dist",
     "disableSizeLimit": true,
     "paths": {
       "pandora-lib/*": ["./src/packages/*"],
-      "dist/*": ["./dist/es/*"]
+      "dist/*": ["./dist/es/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -30,8 +38,10 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "types/**/*.d.ts",
+    "vite.config.ts",
     "docs/.vitepress/**/*.ts",
     "docs/.vitepress/**/*.vue"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

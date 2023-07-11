@@ -1,6 +1,6 @@
 <template>
   <div class="vpandora-charts-container">
-    <div ref="chartRef" class="vpandora-charts"></div>
+    <div ref="chartRef" class="vpandora-charts" />
   </div>
 </template>
 

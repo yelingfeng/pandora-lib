@@ -21,8 +21,10 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'no-undef': 0,
     'no-console': 0,
     'no-useless-escape': 0,
+    'no-unused-vars': 0,
     'prefer-rest-params': 0,
     'prefer-spread': 0,
     '@typescript-eslint/no-var-requires': 0,
@@ -31,9 +33,12 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
+    '@typescript-eslint/ban-types': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     // '@typescript-eslint/ban-ts-ignore': 1,
     '@typescript-eslint/no-this-alias': [
@@ -41,6 +46,22 @@ module.exports = {
       {
         allowDestructuring: true, // Allow `const { props, state } = this`; false by default
         allowedNames: ['self'], // Allow `const self = this`; `[]` by default
+      },
+    ],
+    'vue/no-v-html': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-explicit-emits': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'always',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
       },
     ],
     'prettier/prettier': 'error',

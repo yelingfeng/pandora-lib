@@ -8,7 +8,7 @@
       :theme="theme"
       @zr:click="handleZrClick"
       @click="handleClick"
-    ></Charts>
+    />
   </div>
 </template>
 <script lang="ts" setup>

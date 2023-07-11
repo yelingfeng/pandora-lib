@@ -176,6 +176,6 @@ opt.value = {
 
 <template>
   <div class="demo-charts">
-    <Charts :options="opt"></Charts>
+    <Charts :options="opt" />
   </div>
 </template>
