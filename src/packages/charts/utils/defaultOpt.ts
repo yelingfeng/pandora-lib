@@ -12,7 +12,7 @@ import {
   AxisLineType,
   AxisLabelType,
   DataZoomType,
-} from '../types'
+} from '../types/props'
 
 /**
  * @param opt
@@ -140,13 +140,15 @@ export const getDataZoomOpt = (opt: DataZoomType) => {
   ]
 }
 
+const theme1 = {
+  color: COMMON_COLORS,
+  backgroundColor: BG_COLOR,
+}
+
 /**
  * default 主题配置 配置
  * @returns
  */
 export const defaultThemeOpt = () => {
-  return {
-    color: COMMON_COLORS,
-    backgroundColor: BG_COLOR,
-  }
+  return theme1
 }

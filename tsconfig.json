@@ -10,7 +10,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "@types/jest", "@types/node"],
+    "types": [
+      "vite/client",
+      "@types/jest",
+      "@types/node",
+      "./src/global.d.ts"
+    ],
     // "declaration": false,
     // "declarationDir": "dist/types",
     "outDir": "dist",

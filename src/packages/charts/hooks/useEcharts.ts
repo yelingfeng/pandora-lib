@@ -3,20 +3,21 @@ import { unref, type Ref, nextTick, onUnmounted } from 'vue'
 import { type EChartsOption } from 'echarts'
 import { isFunction } from 'pandora-lib/utils'
 import { useEventListener } from './useEventListener'
+import { EventTarget } from '../types'
 import echarts from '../plugins'
 /**
  *
  * @param elRef
- * @param chartKey
+ * @param theme
  * @param eventConfig 事件配置
  * @returns
  */
 export function useECharts(
   elRef: Ref<HTMLDivElement>,
-  chartKey = 'default',
-  eventConfig: any = {}
+  theme = 'default',
+  listeners: any
 ) {
-  let chartInstance: echarts.ECharts | null = null
+  let chartInstance: any
   let resizeFn: Fn = resize
   let removeResizeFn: Fn = () => {}
   resizeFn = useDebounceFn(resize, 200)
@@ -27,25 +28,45 @@ export function useECharts(
     if (!el || !unref(el)) {
       return
     }
-
-    chartInstance = echarts.init(el)
+    chartInstance = echarts.init(el, theme)
     const { removeEvent } = useEventListener({
       el: window,
       name: 'resize',
       listener: resizeFn,
     })
     removeResizeFn = removeEvent
-    bindClickEvent()
-  }
+    Object.keys(listeners).forEach((key) => {
+      let handler = listeners[key]
 
-  function bindClickEvent() {
-    chartInstance?.on('click', (param: any) => {
-      if (
-        eventConfig.clickHandler &&
-        isFunction(eventConfig.clickHandler)
-      ) {
-        eventConfig.clickHandler(param)
+      if (!handler) {
+        return
       }
+
+      let event = key.toLowerCase()
+      if (event.charAt(0) === '~') {
+        event = event.substring(1)
+        handler.__once__ = true
+      }
+
+      let target: EventTarget = chartInstance
+      if (event.indexOf('zr:') === 0) {
+        target = chartInstance.getZr()
+        event = event.substring(3)
+      }
+
+      if (handler.__once__) {
+        delete handler.__once__
+        const raw = handler
+        handler = (...args: any[]) => {
+          raw(...args)
+          target.off(event, handler)
+        }
+      }
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore EChartsType["on"] is not compatible with ZRenderType["on"]
+      // but it's okay here
+      target.on(event, handler)
     })
   }
 

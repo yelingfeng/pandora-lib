@@ -1,7 +1,6 @@
 import { EChartsOption } from 'echarts'
 import { _merge } from './index'
 import { defaultThemeOpt } from './defaultOpt'
-import { merge } from 'pandora-lib/utils'
 
 /**
  * echarts 构建 封装
@@ -80,7 +79,7 @@ export const build = (data: Array<any>): EChartsOption => {
         radius: ['25%', '60%'],
         center: ['50%', '50%'],
         data: data,
-        hoverAnimation: false,
+        // hoverAnimation: false,
         itemStyle: {
           normal: {
             borderColor: '#fff',

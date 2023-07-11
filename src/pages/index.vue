@@ -2,7 +2,13 @@
   <h3>Home Page</h3>
   <img alt="Vue logo" src="../assets/logo.png" />
   <div style="height: 400px; width: 500px">
-    <Charts :options="opt" :data="echartData"></Charts>
+    <Charts
+      :options="opt"
+      :data="echartData"
+      :theme="theme"
+      @zr:click="handleZrClick"
+      @click="handleClick"
+    ></Charts>
   </div>
 </template>
 <script lang="ts" setup>
@@ -10,6 +16,7 @@ import { Charts } from 'pandora-lib/charts'
 import { ref } from 'vue'
 let opt: any = {}
 const charts: any = ref(null)
+const theme: any = ref('dark')
 const echartData = [
   {
     name: 'A类',
@@ -52,4 +59,12 @@ const echartData = [
     value: '2420',
   },
 ]
+
+const handleZrClick = (...args: [any]) => {
+  console.log('click from zrender', ...args)
+}
+
+const handleClick = (...args: [any]) => {
+  console.log('click from echarts', ...args)
+}
 </script>

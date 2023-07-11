@@ -126,7 +126,8 @@
     "@types/lodash-es": "^4.17.7",
     "@unocss/reset": "^0.35.2",
     "echarts": "^5.4.2",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "vue-demi": "^0.14.5"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
