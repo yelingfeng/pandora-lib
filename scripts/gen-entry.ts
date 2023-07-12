@@ -13,10 +13,7 @@ import { init, parse } from 'es-module-lexer'
 import pkg from '../package.json'
 
 const CWD = process.cwd()
-const PACKAGES_PATH = path.resolve(
-  __dirname,
-  '../src/packages'
-)
+const PACKAGES_PATH = path.resolve(__dirname, '../packages')
 
 const componentEntrys = klawSync(PACKAGES_PATH, {
   nofile: true,
@@ -60,7 +57,7 @@ export async function parseComponentExports() {
 
     str += `import ${matchs[1]} from '${comp
       .replace(/\.ts$/, '')
-      .replace(`${CWD}/src/packages`, '.')}'\n`
+      .replace(`${CWD}/packages`, '.')}'\n`
     componentNames.push(matchs[1])
   }
   str += '\n'
@@ -91,7 +88,7 @@ export async function parseComponentExports() {
 
 async function writeEntry() {
   fs.writeFileSync(
-    `${CWD}/src/packages/pandora-lib.ts`,
+    `${CWD}/packages/pandora-lib.ts`,
     await parseComponentExports()
   )
   /**
@@ -99,7 +96,7 @@ async function writeEntry() {
    */
   spawn(
     /^win/.test(process.platform) ? 'eslint.cmd' : 'eslint',
-    ['./src/packages/pandora-lib.ts', '--fix']
+    ['./packages/pandora-lib.ts', '--fix']
   ).on('error', function (err) {
     throw err
   })

@@ -37,7 +37,7 @@ const REPO_BASE_URL = '/pandora-lib/'
 
 export default defineConfig({
   base: process.env.VERCEL_BUILD ? '/' : REPO_BASE_URL,
-  title: 'PandoraLib',
+  title: 'Pandoralib',
   description: 'pandora-lib doc',
   head: [
     [
@@ -48,28 +48,28 @@ export default defineConfig({
         href: REPO_BASE_URL + 'favicon.ico',
       },
     ],
-    [
-      'link',
-      {
-        rel: 'dns-prefetch',
-        href: 'https://fonts.gstatic.com',
-      },
-    ],
-    [
-      'link',
-      {
-        rel: 'preconnect',
-        crossorigin: 'anonymous',
-        href: 'https://fonts.gstatic.com',
-      },
-    ],
-    [
-      'link',
-      {
-        href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;400;500&family=Inter:wght@200;400;500;600',
-        rel: 'stylesheet',
-      },
-    ],
+    // [
+    //   'link',
+    //   {
+    //     rel: 'dns-prefetch',
+    //     href: 'https://fonts.gstatic.com',
+    //   },
+    // ],
+    // [
+    //   'link',
+    //   {
+    //     rel: 'preconnect',
+    //     crossorigin: 'anonymous',
+    //     href: 'https://fonts.gstatic.com',
+    //   },
+    // ],
+    // [
+    //   'link',
+    //   {
+    //     href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;400;500&family=Inter:wght@200;400;500;600',
+    //     rel: 'stylesheet',
+    //   },
+    // ],
   ],
 
   lang: 'en-US',
@@ -81,7 +81,7 @@ export default defineConfig({
     localeLinks: {
       text: '',
       items: [
-        { text: 'English', link: '/en-US/' },
+        // { text: 'English', link: '/en-US/' },
         { text: '简体中文', link: '/zh-CN/' },
       ],
     },
@@ -130,14 +130,14 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://yelingfeng.github.io/pandora-lib//',
+      pattern: 'https://github.com/yelingfeng/pandora-lib',
       text: 'Edit this page on GitHub',
     },
 
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://yelingfeng.github.io/pandora-lib/',
+        link: 'https://github.com/yelingfeng/pandora-lib',
       },
     ],
 

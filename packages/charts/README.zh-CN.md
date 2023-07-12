@@ -2,6 +2,7 @@
 class: 'charts-doc'
 sidebarDepth: 2
 ---
+
 # Charts 图表
 
 ## 引入
@@ -15,7 +16,7 @@ Vue.creatApp().use(Charts.name, Charts)
 ## 案例
 
 :::demo  
-src/packages/Charts/demo/demo0.vue  
+packages/Charts/demo/demo0.vue  
 :::
 
 ## props

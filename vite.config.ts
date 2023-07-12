@@ -28,8 +28,8 @@ export default defineConfig({
     proxy: {
       '/api/v1': {
         target:
-          'https://mock.mengxuegu.com/mock/63218b5fb4c53348ed2bc212/api/v1',
-        ws: true,
+          'http://rap2api.taobao.org/app/mock/313051/',
+        ws: false,
         /** 是否允许跨域 */
         changeOrigin: true,
         rewrite: (path) => path.replace('/api/v1', ''),
@@ -90,7 +90,7 @@ export default defineConfig({
     alias: {
       'pandora-lib/':
         process.env.NODE_ENV !== 'preview'
-          ? `${path.resolve(__dirname, './src/packages')}/`
+          ? `${path.resolve(__dirname, './packages')}/`
           : `${path.resolve(__dirname, './dist/es')}/`,
       'dist/': `${path.resolve(__dirname, './dist/es')}/`,
       '@': resolve(__dirname, './src'),

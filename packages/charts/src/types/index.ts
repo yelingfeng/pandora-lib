@@ -12,9 +12,9 @@ export type Injection<T> =
   | { value: T | null }
 
 type InitType = typeof init
-export type InitParameters = Parameters<InitType>
 export type Theme = NonNullable<InitParameters[1]>
 export type ThemeInjection = Injection<Theme>
+export type InitParameters = Parameters<InitType>
 export type InitOptions = NonNullable<InitParameters[2]>
 
 export type InitOptionsInjection = Injection<InitOptions>
@@ -82,6 +82,21 @@ type OtherEventName =
   | 'brushselected'
   | 'globalcursortaken'
 
+export type LoadingOptions = {
+  text?: string
+  textColor?: string
+  fontSize?: number | string
+  fontWeight?: number | string
+  fontStyle?: string
+  fontFamily?: string
+  maskColor?: string
+  showSpinner?: boolean
+  color?: string
+  spinnerRadius?: number
+  lineWidth?: number
+  zlevel?: number
+}
+
 type MouseEmits = {
   [key in MouseEventName]: (
     params: ECElementEvent
@@ -103,3 +118,10 @@ export type Emits = MouseEmits &
     rendered: (params: { elapsedTime: number }) => boolean
     finished: () => boolean
   } & ZRenderEmits
+
+/**
+ * 原始数据类型
+ */
+export type OriginData<T> = {
+  [index: number]: T | null
+}

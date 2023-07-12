@@ -150,5 +150,5 @@ const theme1 = {
  * @returns
  */
 export const defaultThemeOpt = () => {
-  return theme1
+  return {}
 }

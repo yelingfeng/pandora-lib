@@ -70,7 +70,7 @@ const handleLogin = () => {
           router.push({ path: '/' })
         })
         .catch(() => {
-          createCode()
+          // createCode()
           loginFormData.password = ''
         })
         .finally(() => {
@@ -81,19 +81,19 @@ const handleLogin = () => {
     }
   })
 }
-/** 创建验证码 */
-const createCode = () => {
-  // 先清空验证码的输入
-  loginFormData.code = ''
-  // 获取验证码
-  codeUrl.value = ''
-  getLoginCodeApi().then((res) => {
-    codeUrl.value = res.data
-  })
-}
+// /** 创建验证码 */
+// const createCode = () => {
+//   // 先清空验证码的输入
+//   loginFormData.code = ''
+//   // 获取验证码
+//   codeUrl.value = ''
+//   getLoginCodeApi().then((res) => {
+//     codeUrl.value = res.data
+//   })
+// }
 
-/** 初始化验证码 */
-createCode()
+// /** 初始化验证码 */
+// createCode()
 </script>
 
 <template>
@@ -101,7 +101,7 @@ createCode()
     <ThemeSwitch class="theme-switch" />
     <div class="login-card">
       <div class="title">
-        <img src="@/assets/layout/logo-text-2.png" />
+        <h2>Pandora-lib</h2>
       </div>
       <div class="content">
         <el-form
@@ -131,7 +131,7 @@ createCode()
               show-password
             />
           </el-form-item>
-          <el-form-item prop="code">
+          <!-- <el-form-item prop="code">
             <el-input
               v-model.trim="loginFormData.code"
               placeholder="验证码"
@@ -160,7 +160,7 @@ createCode()
                 </el-image>
               </template>
             </el-input>
-          </el-form-item>
+          </el-form-item> -->
           <el-button
             :loading="loading"
             type="primary"
@@ -197,7 +197,7 @@ createCode()
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 150px;
+      height: 100px;
       img {
         height: 100%;
       }

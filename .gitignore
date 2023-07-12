@@ -7,3 +7,4 @@ pandora-lib.ts
 docs/zh-CN/components
 docs/en-US/components
 coverage
+.vitepress

@@ -50,3 +50,18 @@ export function unwrapInjected<T, V>(
 
   return value || defaultValue
 }
+
+export const trim = function (string: string) {
+  return (string || '').replace(
+    /^[\s\uFEFF]+|[\s\uFEFF]+$/g,
+    ''
+  )
+}
+
+export const isFunction = (obj: any) => {
+  return typeof obj === 'function'
+}
+
+export const isArray = (obj: any) => {
+  return Array.isArray(obj)
+}

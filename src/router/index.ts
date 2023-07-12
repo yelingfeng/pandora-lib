@@ -89,11 +89,11 @@ export const constantRoutes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: 'Bar',
-        component: () => import('@/views/charts/Bar.vue'),
-        name: 'Bar',
+        path: 'Base',
+        component: () => import('@/views/charts/Base.vue'),
+        name: 'Base',
         meta: {
-          title: 'Bar',
+          title: 'Base',
           keepAlive: true,
         },
       },

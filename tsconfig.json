@@ -28,7 +28,7 @@
     "outDir": "dist",
     "disableSizeLimit": true,
     "paths": {
-      "pandora-lib/*": ["./src/packages/*"],
+      "pandora-lib/*": ["packages/*"],
       "dist/*": ["./dist/es/*"],
       "@/*": ["./src/*"]
     }
@@ -38,10 +38,11 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "types/**/*.d.ts",
     "vite.config.ts",
+    "types/*.d.ts",
     "docs/.vitepress/**/*.ts",
-    "docs/.vitepress/**/*.vue"
+    "docs/.vitepress/**/*.vue",
+    "global.d.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }

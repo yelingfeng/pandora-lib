@@ -12,7 +12,7 @@ const outPubOptions = {
   },
 }
 
-const input = 'src/packages/pandora-lib.ts'
+const input = 'packages/pandora-lib.ts'
 
 const getPlugins = () => [
   replace({
@@ -38,7 +38,7 @@ const getPlugins = () => [
         find: /^(pandora-lib\/)(.*)/,
         replacement: `${path.resolve(
           __dirname,
-          '../src/packages'
+          '../packages'
         )}/$2/index.ts`,
       },
     ],

@@ -14,8 +14,8 @@ initTheme()
 ElNotification({
   title: 'Hello',
   message: '你好,欢迎登陆系统',
-  duration: 0,
-  position: 'bottom-right',
+  duration: 2000,
+  position: 'top-right',
 })
 </script>
 

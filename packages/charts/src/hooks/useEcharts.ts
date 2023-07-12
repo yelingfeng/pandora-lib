@@ -1,20 +1,24 @@
 import { useDebounceFn } from '@vueuse/core'
-import { unref, type Ref, nextTick, onUnmounted } from 'vue'
+import {
+  unref,
+  type Ref,
+  nextTick,
+  onUnmounted,
+  type ComputedRef,
+} from 'vue-demi'
 import { type EChartsOption } from 'echarts'
-import { isFunction } from 'pandora-lib/utils'
+import { isFunction } from '../utils'
 import { useEventListener } from './useEventListener'
 import { EventTarget } from '../types'
 import echarts from '../plugins'
 /**
  *
  * @param elRef
- * @param theme
  * @param eventConfig 事件配置
  * @returns
  */
 export function useECharts(
   elRef: Ref<HTMLDivElement>,
-  theme = 'default',
   listeners: any
 ) {
   let chartInstance: any
@@ -28,7 +32,7 @@ export function useECharts(
     if (!el || !unref(el)) {
       return
     }
-    chartInstance = echarts.init(el, theme)
+    chartInstance = echarts.init(el)
     const { removeEvent } = useEventListener({
       el: window,
       name: 'resize',
@@ -117,6 +121,7 @@ export function useECharts(
     resize,
     getPosByGeo,
     echarts,
+    initCharts,
     setShowTip,
   }
 }

@@ -35,7 +35,6 @@ const {
   handleSizeChange,
 } = usePagination()
 
-//#region 增
 const dialogVisible = ref<boolean>(false)
 const formRef = ref<FormInstance | null>(null)
 const formData = reactive({
@@ -93,9 +92,7 @@ const resetForm = () => {
   formData.username = ''
   formData.password = ''
 }
-//#endregion
 
-//#region 删
 const handleDelete = (row: GetTableData) => {
   ElMessageBox.confirm(
     `正在删除用户：${row.username}，确认删除？`,
@@ -112,18 +109,14 @@ const handleDelete = (row: GetTableData) => {
     })
   })
 }
-//#endregion
 
-//#region 改
 const currentUpdateId = ref<undefined | string>(undefined)
 const handleUpdate = (row: GetTableData) => {
   currentUpdateId.value = row.id
   formData.username = row.username
   dialogVisible.value = true
 }
-//#endregion
 
-//#region 查
 const tableData = ref<GetTableData[]>([])
 const searchFormRef = ref<FormInstance | null>(null)
 const searchData = reactive({
@@ -158,7 +151,6 @@ const resetSearch = () => {
   searchFormRef.value?.resetFields()
   handleSearch()
 }
-//#endregion
 
 /** 监听分页参数的变化 */
 watch(

@@ -23,7 +23,7 @@ module.exports = function (
     actions: [
       {
         type: 'addMany',
-        destination: '../src/packages/{{name}}/',
+        destination: '../packages/{{name}}/',
         base: `../scripts/_template`,
         templateFiles: `../scripts/_template/**/**`,
       },
@@ -45,9 +45,6 @@ const checkComponentName = (componentName) => {
  */
 const checkComponentExist = (componentName) => {
   return fs.existsSync(
-    path.resolve(
-      __dirname,
-      `../src/packages/${componentName}`
-    )
+    path.resolve(__dirname, `../packages/${componentName}`)
   )
 }

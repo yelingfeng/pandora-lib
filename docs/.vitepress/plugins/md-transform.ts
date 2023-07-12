@@ -5,7 +5,7 @@ import type { Plugin } from 'vite'
 
 const PACKAGES_PATH = path.resolve(
   __dirname,
-  '../../../src/packages'
+  '../../../packages'
 )
 
 const components = klawSync(PACKAGES_PATH, {
@@ -28,7 +28,7 @@ export function MarkdownTransform(): Plugin {
         headers: [],
         footers: [],
         scriptSetups: [
-          `const demos = import.meta.globEager('../../../src/packages/${componentId}/demo/demo*.vue')`,
+          `const demos = import.meta.globEager('../../../packages/${componentId}/demo/demo*.vue')`,
         ],
       }
 

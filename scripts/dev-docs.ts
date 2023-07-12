@@ -10,10 +10,7 @@ const logger = createLogger('info', {
   prefix: 'seed',
 })
 
-const PACKAGES_PATH = path.resolve(
-  __dirname,
-  '../src/packages'
-)
+const PACKAGES_PATH = path.resolve(__dirname, '../packages')
 
 export const componentEntrys = klawSync(PACKAGES_PATH, {
   nofile: true,
@@ -40,7 +37,7 @@ async function devDocs() {
 devDocs()
 
 function docsChangeWatcher() {
-  const src = path.resolve(process.cwd(), 'src/packages')
+  const src = path.resolve(process.cwd(), '/packages')
 
   chokidar
     .watch(src, {

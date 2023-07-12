@@ -1,12 +1,12 @@
-declare interface Fn<T = any, R = T> {
+declare type Fn<T = any, R = T> = {
   (...arg: T[]): R
 }
 
-declare interface PromiseFn<T = any, R = T> {
+declare type PromiseFn<T = any, R = T> = {
   (...arg: T[]): Promise<R>
 }
 
-declare interface IObj<T = any> {
+declare type IObj<T = any> = {
   [key: string]: T
   [key: number]: T
 }
@@ -78,9 +78,5 @@ declare type ElRef<T extends HTMLElement = HTMLDivElement> =
 
 declare interface Window {
   $: void
-  BMap: void
-  BMapLib: void
-  BMapGL: void
-  BMapGLLib: void
   echarts: void
 }

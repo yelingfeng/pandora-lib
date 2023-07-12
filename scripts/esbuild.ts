@@ -7,10 +7,7 @@ import klawSync from 'klaw-sync'
 import { parse, init } from 'es-module-lexer'
 import vue from 'unplugin-vue/esbuild'
 
-const PACKAGES_PATH = path.resolve(
-  __dirname,
-  '../src/packages'
-)
+const PACKAGES_PATH = path.resolve(__dirname, '../packages')
 
 export const componentEntrys = klawSync(PACKAGES_PATH, {
   nofile: true,
@@ -63,7 +60,7 @@ async function bundle(options?: BuildOptions) {
   await build({
     outfile: `${cwd()}/dist/es/pandora-lib.esm.js`,
     bundle: true,
-    entryPoints: [`${cwd()}/src/packages/pandora-lib.ts`],
+    entryPoints: [`${cwd()}/packages/pandora-lib.ts`],
     plugins: [vue()],
     loader: { '.png': 'dataurl' },
     external: ['vue', 'pandora-lib/*', '@vue/*'],

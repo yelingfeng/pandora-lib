@@ -31,7 +31,7 @@ const genVueTypes = async () => {
 
   const entry = await parseComponentExports()
   const entrySourceFile = project.createSourceFile(
-    path.resolve(cwd(), 'src/packages/pandora-lib.ts'),
+    path.resolve(cwd(), 'packages/pandora-lib.ts'),
     entry,
     { overwrite: true }
   )
@@ -39,7 +39,7 @@ const genVueTypes = async () => {
   sourceFiles.push(entrySourceFile)
 
   const filePaths = klawSync(
-    path.resolve(cwd(), 'src/packages'),
+    path.resolve(cwd(), 'packages'),
     {
       nodir: true,
     }
