@@ -16,12 +16,27 @@
           <el-form-item label="autoresize">
             <el-switch v-model="form.autoresize" />
           </el-form-item>
-          <el-form-item label="宽度变化">
+          <el-form-item label="变化width">
             <el-slider
               v-model="_width"
               :max="600"
               :min="400"
             />
+          </el-form-item>
+          <el-form-item label="开启loading">
+            <el-button
+              :disabled="Loading"
+              @click="loadingRefresh"
+              >点我</el-button
+            >
+          </el-form-item>
+          <el-form-item label="轮播">
+            <el-button type="primary" @click="startActions"
+              >开启</el-button
+            >
+            <el-button type="primary" @click="stopActions"
+              >关闭</el-button
+            >
           </el-form-item>
         </el-form>
       </el-col>
@@ -37,6 +52,8 @@
               :options="opt"
               :data="echartData"
               :theme="form.theme"
+              :loading="Loading"
+              :loading-options="LoadingOptions"
               :autoresize="form.autoresize"
               @zr:click="handleZrClick"
               @click="handleClick"
@@ -50,8 +67,11 @@
 import { Charts } from 'pandora-lib/charts'
 import {
   ref,
+  Ref,
   reactive,
+  provide,
   computed,
+  onBeforeUnmount,
   onMounted,
 } from 'vue-demi'
 import { registerTheme } from 'echarts/core'
@@ -74,6 +94,13 @@ const boxCenterStyle = computed(() => {
   }
 })
 
+const Loading = ref(false)
+const LoadingOptions = ref({
+  text: 'Loading…',
+  color: '#4ea397',
+  maskColor: 'rgba(255, 255, 255, 0.4)',
+})
+
 const theme: any = ref('ovilia-green')
 const themeOptions = ref([
   { value: 'ovilia-green', label: 'ovilia-green' },
@@ -85,6 +112,61 @@ const themeOptions = ref([
 registerTheme('ovilia-green', themeJson)
 registerTheme('dark2', themeJson2)
 
+const handleZrClick = (...args: [any]) => {
+  console.log('click from zrender', ...args)
+}
+
+const handleClick = (...args: [any]) => {
+  console.log('click from echarts', ...args)
+}
+
+let seconds = 0
+
+const loadingRefresh = (val: any) => {
+  seconds = 3
+  Loading.value = true
+  const timer = setInterval(() => {
+    seconds--
+    if (seconds === 0) {
+      clearTimeout(timer)
+      Loading.value = false
+    }
+  }, 1000)
+}
+
+let actionTimer: any = 0
+const startActions = () => {
+  let dataIndex = -1
+  const curChart = charts.value
+
+  if (!curChart) {
+    return
+  }
+
+  const dataLen = echartData.length
+  actionTimer = setInterval(() => {
+    curChart.dispatchAction({
+      type: 'downplay',
+      seriesIndex: 0,
+      dataIndex,
+    })
+    dataIndex = (dataIndex + 1) % dataLen
+    curChart.dispatchAction({
+      type: 'highlight',
+      seriesIndex: 0,
+      dataIndex,
+    })
+    // 显示 tooltip
+    curChart.dispatchAction({
+      type: 'showTip',
+      seriesIndex: 0,
+      dataIndex,
+    })
+  }, 1000)
+}
+const stopActions = () => {
+  clearInterval(actionTimer)
+}
 const echartData = [
   {
     name: 'A类',
@@ -128,20 +210,10 @@ const echartData = [
   },
 ]
 
-const handleZrClick = (...args: [any]) => {
-  console.log('click from zrender', ...args)
-}
+onMounted(() => {})
 
-const handleClick = (...args: [any]) => {
-  console.log('click from echarts', ...args)
-}
-
-const ChangeTheme = (val: any) => {
-  console.log(val)
-}
-
-onMounted(() => {
-  console.log(charts)
+onBeforeUnmount(() => {
+  stopActions()
 })
 </script>
 

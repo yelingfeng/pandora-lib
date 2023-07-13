@@ -1,62 +1,68 @@
-import { ref, watch, unref, type Ref } from 'vue'
-import { useDebounceFn, useThrottleFn } from '@vueuse/core'
+import { type Ref } from 'vue-demi'
+import type { EChartsType } from '../types'
 
-export type RemoveEventFn = () => void
+/**
+ * 监听事件
+ * @param instance  实例
+ * @param realListeners
+ */
+export function useEventListener(
+  instance: EChartsType | undefined,
+  attrs: any,
+  listeners: any
+) {
+  let realListeners = listeners
+  if (!realListeners) {
+    realListeners = {}
 
-export interface UseEventParams {
-  el?: Element | Ref<Element | undefined> | Window | any
-  name: string
-  listener: EventListener
-  options?: boolean | AddEventListenerOptions
-  autoRemove?: boolean
-  isDebounce?: boolean
-  wait?: number
-}
-export function useEventListener({
-  el = window,
-  name,
-  listener,
-  options,
-  autoRemove = true,
-  isDebounce = true,
-  wait = 80,
-}: UseEventParams): { removeEvent: RemoveEventFn } {
-  /* eslint-disable-next-line */
-  let remove: RemoveEventFn = () => {}
-  const isAddRef = ref(false)
+    Object.keys(attrs)
+      .filter(
+        (key) => key.indexOf('on') === 0 && key.length > 2
+      )
+      .forEach((key) => {
+        // onClick    -> c + lick
+        // onZr:click -> z + r:click
+        let event =
+          key.charAt(2).toLowerCase() + key.slice(3)
 
-  if (el) {
-    const element: Ref<Element> = ref(el as Element)
-
-    const handler = isDebounce
-      ? useDebounceFn(listener, wait)
-      : useThrottleFn(listener, wait)
-    const realHandler = wait ? handler : listener
-    const removeEventListener = (e: Element) => {
-      isAddRef.value = true
-      e.removeEventListener(name, realHandler, options)
-    }
-    const addEventListener = (e: Element) => {
-      e.addEventListener(name, realHandler, options)
-    }
-
-    const removeWatch = watch(
-      element,
-      (v, _ov, cleanUp) => {
-        if (v) {
-          !unref(isAddRef) && addEventListener(v)
-          cleanUp(() => {
-            autoRemove && removeEventListener(v)
-          })
+        // clickOnce    -> ~click
+        // zr:clickOnce -> ~zr:click
+        if (event.substring(event.length - 4) === 'Once') {
+          event = `~${event.substring(0, event.length - 4)}`
         }
-      },
-      { immediate: true }
-    )
 
-    remove = () => {
-      removeEventListener(element.value)
-      removeWatch()
-    }
+        realListeners[event] = attrs[key]
+      })
   }
-  return { removeEvent: remove }
+  Object.keys(realListeners).forEach((key) => {
+    let handler = realListeners[key]
+
+    if (!handler) {
+      return
+    }
+
+    let event = key.toLowerCase()
+    if (event.charAt(0) === '~') {
+      event = event.substring(1)
+      handler.__once__ = true
+    }
+    let target: any = instance
+    if (event.indexOf('zr:') === 0) {
+      target = instance.getZr()
+      event = event.substring(3)
+    }
+
+    if (handler.__once__) {
+      delete handler.__once__
+      const raw = handler
+      handler = (...args: any[]) => {
+        raw(...args)
+        target.off(event, handler)
+      }
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore EChartsType["on"] is not compatible with ZRenderType["on"]
+    // but it's okay here
+    target.on(event, handler)
+  })
 }

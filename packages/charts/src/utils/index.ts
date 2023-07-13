@@ -1,4 +1,12 @@
 import { merge } from 'lodash-es'
+import { unref } from 'vue-demi'
+import type { Injection } from '../types'
+
+type Attrs = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
+}
+
 /**
  * 对象深度合并
  * @param obj1
@@ -9,14 +17,6 @@ export const _merge = (
   target: Recordable
 ) => {
   return merge(source, target)
-}
-
-import { unref } from 'vue-demi'
-import type { Injection } from '../types'
-
-type Attrs = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any
 }
 
 // Copied from
