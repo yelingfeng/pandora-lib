@@ -125,3 +125,13 @@ export type Emits = MouseEmits &
 export type OriginData<T> = {
   [index: number]: T | null
 }
+
+/**
+ *  自动Resize刷新
+ */
+export type AutoresizeProp =
+  | boolean
+  | {
+      throttle?: number
+      onResize?: () => void
+    }

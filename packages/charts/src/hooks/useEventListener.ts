@@ -4,10 +4,11 @@ import type { EChartsType } from '../types'
 /**
  * 监听事件
  * @param instance  实例
- * @param realListeners
+ * @param attrs 属性
+ * @param listeners 监听
  */
 export function useEventListener(
-  instance: EChartsType | undefined,
+  instance: any,
   attrs: any,
   listeners: any
 ) {

@@ -1,13 +1,19 @@
 import { EChartsOption } from 'echarts'
 import { _merge } from './index'
 import { defaultThemeOpt } from './defaultOpt'
+import { transformOriginDataToSeries } from '../transform'
 
 /**
  * echarts 构建 封装
- *
  * build
  */
 export const build = (data: Array<any>): EChartsOption => {
+  const seriesData = transformOriginDataToSeries(
+    data,
+    'Pie'
+  )
+  console.log(seriesData)
+
   //   const bgColor = '#fff'
   const title = '总量'
   //   const color = [

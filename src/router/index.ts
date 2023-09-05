@@ -63,22 +63,22 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ],
   },
-  {
-    path: '/unocss',
-    component: Layout,
-    redirect: '/unocss/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/unocss/index.vue'),
-        name: 'UnoCSS',
-        meta: {
-          title: 'unocss',
-          svgIcon: 'unocss',
-        },
-      },
-    ],
-  },
+  // {
+  //   path: '/unocss',
+  //   component: Layout,
+  //   redirect: '/unocss/index',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/unocss/index.vue'),
+  //       name: 'UnoCSS',
+  //       meta: {
+  //         title: 'unocss',
+  //         svgIcon: 'unocss',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     path: '/Charts',
     component: Layout,
@@ -94,6 +94,16 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: 'Base',
         meta: {
           title: 'Base',
+          keepAlive: true,
+        },
+      },
+      {
+        path: 'TransData',
+        component: () =>
+          import('@/views/charts/TransData.vue'),
+        name: 'TransData',
+        meta: {
+          title: 'TransData',
           keepAlive: true,
         },
       },

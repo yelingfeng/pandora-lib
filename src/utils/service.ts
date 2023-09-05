@@ -22,6 +22,7 @@ function createService() {
     (response) => {
       // apiData 是 api 返回的数据
       const apiData = response.data
+      console.log(apiData)
       // 二进制数据则直接返回
       const responseType = response.request?.responseType
       if (

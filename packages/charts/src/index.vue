@@ -3,7 +3,6 @@ import {
   onMounted,
   onBeforeUnmount,
   ref,
-  Ref,
   inject,
   h,
   Vue2,
@@ -15,25 +14,18 @@ import {
   nextTick,
   defineComponent,
   getCurrentInstance,
-  type PropType,
   type InjectionKey,
 } from 'vue-demi'
 import { init as initChart } from 'echarts/core'
 import type {
   EChartsType,
-  EventTarget,
-  Theme,
   ThemeInjection,
   ChartsOption,
-  OriginData,
-  InitOptions,
-  LoadingOptions,
   InitOptionsInjection,
   UpdateOptions,
   UpdateOptionsInjection,
   Emits,
 } from './types'
-import type { AutoresizeProp } from './types/props'
 import { omitOn, unwrapInjected } from './utils'
 import { build } from './utils/core'
 import {
@@ -48,6 +40,8 @@ import {
   useLoading,
   useEventListener,
 } from './hooks'
+
+import { defaultProps } from './props'
 
 const wcRegistered = register()
 
@@ -64,49 +58,14 @@ export const UPDATE_OPTIONS_KEY =
 export default defineComponent({
   name: 'Charts',
   inheritAttrs: false,
-  props: {
-    data: {
-      type: Array as PropType<OriginData<any>[]>,
-      default: () => [],
-    },
-    theme: {
-      type: [Object, String] as PropType<Theme>,
-    },
-    //
-    options: {
-      type: Object as PropType<ChartsOption>,
-      default: () => {},
-    },
-    group: String,
-    // echarts 配置
-    initOptions: Object as PropType<InitOptions>,
-    // 更新配置
-    updateOptions: Object as PropType<UpdateOptions>,
-    //
-    manualUpdate: Boolean,
-    //
-    autoresize: {
-      type: [Boolean, Object] as PropType<AutoresizeProp>,
-      default: true,
-    },
-    // loading
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-    // loading配置
-    loadingOptions: {
-      type: Object as PropType<LoadingOptions>,
-      default: () => {},
-    },
-  },
+  props: defaultProps,
   emits: {} as unknown as Emits,
   setup(props, { attrs }) {
     const root = shallowRef<EChartsElement>()
     const chart = shallowRef<EChartsType>()
     const manualOption = shallowRef<ChartsOption>()
-    const chartRef = ref<HTMLDivElement | null>(null)
 
+    // 取父类传过来的值
     const defaultTheme = inject(THEME_KEY, null)
     const defaultInitOptions = inject(
       INIT_OPTIONS_KEY,

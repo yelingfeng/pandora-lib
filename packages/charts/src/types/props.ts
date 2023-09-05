@@ -37,13 +37,3 @@ export interface DataZoomType {
   show?: boolean
   start?: number
 }
-
-/**
- *  自动Resize刷新
- */
-export type AutoresizeProp =
-  | boolean
-  | {
-      throttle?: number
-      onResize?: () => void
-    }
