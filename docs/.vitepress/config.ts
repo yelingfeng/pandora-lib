@@ -77,7 +77,6 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.png',
     nav: [{ text: '组件', link: '/zh-CN/components/' }],
-
     localeLinks: {
       text: '',
       items: [
@@ -90,7 +89,7 @@ export default defineConfig({
       '/en-US/components/': [
         {
           text: 'How to use',
-          collapsible: true,
+          // collapsible: true,
           items: [
             {
               text: 'Changelog',
@@ -110,7 +109,7 @@ export default defineConfig({
       '/zh-CN/components/': [
         {
           text: '使用',
-          collapsible: true,
+          // collapsible: true,
           items: [
             {
               text: '更新日志',

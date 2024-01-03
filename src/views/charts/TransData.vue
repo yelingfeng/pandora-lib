@@ -11,8 +11,8 @@
             <Charts
               ref="charts"
               :data="echartData"
-              chart-type="pie"
               :options="opt"
+              chart-type="pie"
               sub-chart-type="pie01"
               @zr:click="handleZrClick"
               @click="handleClick"

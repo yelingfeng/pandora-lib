@@ -16,7 +16,7 @@ Vue.creatApp().use(Charts.name, Charts)
 ## 案例
 
 :::demo  
-packages/Charts/demo/demo0.vue  
+packages/charts/demo/demo0.vue  
 :::
 
 ## props

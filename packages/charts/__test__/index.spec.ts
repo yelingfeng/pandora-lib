@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Charts from '../index.vue'
+import Charts from '../src/index.vue'
 
 describe('Charts.vue', () => {
   test('render', () => {

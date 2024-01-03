@@ -60,6 +60,8 @@
               :options="opt"
               :data="echartData"
               :theme="form.theme"
+              chart-type="pie"
+              sub-chart-type="pie01"
               :loading="Loading"
               :loading-options="LoadingOptions"
               :autoresize="form.autoresize"

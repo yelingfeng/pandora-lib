@@ -97,10 +97,10 @@ const copyHandler = () => {
         v-if="demoInfo.describe"
         class="text-xs my-1 <sm:text-xs <sm:my-1"
         v-text="demoInfo.describe"
-      ></div>
+      />
       <!-- demo -->
       <div class="demo-component p-4px">
-        <component :is="demo"></component>
+        <component :is="demo" />
       </div>
       <div
         v-if="demoInfo.showCodeExample"
@@ -155,7 +155,7 @@ const copyHandler = () => {
   transition: opacity 250ms linear;
 }
 .demo-charts {
-  width: 500px;
+  width: 100%;
   height: 400px;
 }
 </style>

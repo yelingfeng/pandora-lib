@@ -4,6 +4,8 @@
       :options="opt"
       :data="echartData"
       :theme="theme"
+      chart-type="pie"
+      sub-chart-type="pie01"
       @zr:click="handleZrClick"
       @click="handleClick"
     />
@@ -11,14 +13,14 @@
 </template>
 
 <script lang="ts">
-export default { name: 'ChartsDemo', title: '基本' }
+export default { name: 'ChartsDemo', title: 'Pie01' }
 </script>
 <script setup lang="ts">
 import Charts from 'pandora-lib/charts'
 import { ref } from 'vue'
 let opt: any = {}
 const charts: any = ref(null)
-const theme: any = ref('dark')
+const theme: any = ref('ovilia-green')
 const echartData = [
   {
     name: 'A类',

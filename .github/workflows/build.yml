@@ -29,8 +29,8 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.PANDORALIBTOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vitepress/dist
-          GIT_CONFIG_NAME: pandora-lib
-          COMMIT_MESSAGE: website deploy
+          token: ${{ secrets.PANDORALIBTOKEN }}
+          branch: gh-pages
+          folder: docs/.vitepress/dist
+          git_config_name: pandora-lib
+          commit_message: website deploy

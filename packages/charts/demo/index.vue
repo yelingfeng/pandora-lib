@@ -29,7 +29,9 @@
 
 <script lang="ts">
 import { createDemoModule } from '../../utils/index'
-const demos = import.meta.globEager('./demo*.vue')
+const demos = import.meta.globEager(
+  './charts/pie/demo*.vue'
+)
 
 export default createDemoModule(
   'Charts',

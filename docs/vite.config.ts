@@ -13,4 +13,9 @@ export default {
     },
   },
   plugins: [MarkdownTransform(), Unocss()],
+  vite: {
+    ssr: {
+      noExternal: ['echarts', 'zrender', 'resize-detector'],
+    },
+  },
 }
