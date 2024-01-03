@@ -9,7 +9,7 @@ const EMPTY_DATA = { category: [], xAxis: [], series: [] }
  * isEmptyData
  * @param  {Array} data
  */
-const isEmptyData = (data) => {
+const isEmptyData = (data: any) => {
   return (
     data == null ||
     (data.length === 1 && data[0].name === '')
@@ -21,17 +21,17 @@ const isEmptyData = (data) => {
  * getCategoryCollection
  * @param chain lodash chain对象
  */
-const getCategoryCollection = (chain) => {
+const getCategoryCollection = (chain: any) => {
   const CATEGORY_KEY = 'category'
   const groupData = chain
-    .filter((it) => {
+    .filter((it: any) => {
       return (
         it[CATEGORY_KEY] !== '' &&
         it[CATEGORY_KEY] != null &&
         it[CATEGORY_KEY].toUpperCase() !== XAXIS
       )
     })
-    .map((it) => {
+    .map((it: any) => {
       return it[CATEGORY_KEY]
     })
     .uniq()
@@ -45,8 +45,8 @@ const getCategoryCollection = (chain) => {
  * @param  {Array}  group
  * @return {Array}
  */
-const getLegendCollection = (group) => {
-  const legendData = group.map((g) => {
+const getLegendCollection = (group: any) => {
+  const legendData = group.map((g: any) => {
     return {
       name: g,
     }
@@ -61,9 +61,9 @@ const getLegendCollection = (group) => {
  * @param   data
  * @return {Boolean}
  */
-const hasConsensusxAxis = (data) => {
+const hasConsensusxAxis = (data: any) => {
   let hasXAsix = false
-  data.forEach((it) => {
+  data.forEach((it: any) => {
     if (
       it.category &&
       it.category.toUpperCase() === XAXIS
@@ -81,9 +81,9 @@ const hasConsensusxAxis = (data) => {
  * @param   data
  * @return {Boolean}
  */
-const hasConsensusxAxisBase = (data) => {
+const hasConsensusxAxisBase = (data: any) => {
   let hasXAsix = false
-  data.forEach((it) => {
+  data.forEach((it: any) => {
     if (it['xAxis']) {
       // 与后台约定，如果有xAxis  x轴data就取xAxis的集合
       hasXAsix = true
@@ -99,18 +99,18 @@ const hasConsensusxAxisBase = (data) => {
  * @param  hasAxis 是否存在特殊分组
  * @return {Array}
  */
-const getxAxisName = (chain, hasAxis) => {
+const getxAxisName = (chain: any, hasAxis: boolean) => {
   let tmpArr
   let xAxisArr = []
   if (hasAxis) {
-    tmpArr = chain.filter((it) => {
+    tmpArr = chain.filter((it: any) => {
       return it.category.toUpperCase() === XAXIS
     })
   } else {
     tmpArr = chain
   }
   xAxisArr = tmpArr
-    .map((n) => {
+    .map((n: any) => {
       return n.name
     })
     .uniq()
@@ -136,16 +136,20 @@ const getxAxisName = (chain, hasAxis) => {
  * @param  {Array} chains
  * @return {String}
  */
-const lookGroupValue = (groupName, xAxis, chains) => {
+const lookGroupValue = (
+  groupName: string,
+  xAxis: string,
+  chains: any
+) => {
   const val = chains
-    .filter((it) => {
+    .filter((it: any) => {
       return (
         it.name === xAxis &&
         it.category != null &&
         it.category === groupName
       )
     })
-    .map((data) => {
+    .map((data: any) => {
       return data.value
     })
     .toString()
@@ -166,22 +170,18 @@ const lookGroupValue = (groupName, xAxis, chains) => {
  *  }
  *
  */
-const createSeriesCollection = ({
-  group,
-  data,
-  xAxis,
-  chain,
-  hasxAxis,
-  name,
-}) => {
+const createSeriesCollection = (params: any) => {
+  const { group, data, xAxis, chain, hasxAxis, name } =
+    params
+
   const seriesCollect: any = []
-  group.forEach((g) => {
+  group.forEach((g: any) => {
     let seriesTemp = []
     if (hasxAxis) {
-      seriesTemp = xAxis.map((axis) => {
+      seriesTemp = xAxis.map((axis: any) => {
         const val = lookGroupValue(g, axis, chain)
         let obj = g
-        data.forEach((item) => {
+        data.forEach((item: any) => {
           if (item.category === g && item.name === axis) {
             obj = item
           }
@@ -194,7 +194,7 @@ const createSeriesCollection = ({
         }
       })
     } else {
-      seriesTemp = data.map((d) => {
+      seriesTemp = data.map((d: any) => {
         if (d.category === g) {
           return {
             name: d.name,
@@ -211,7 +211,7 @@ const createSeriesCollection = ({
     seriesCollect.push({
       type: name,
       name: g,
-      data: seriesTemp.filter((it) => {
+      data: seriesTemp.filter((it: any) => {
         return it !== undefined
       }),
     })
@@ -227,7 +227,10 @@ const createSeriesCollection = ({
  * @param {String} __chartName__ 图表标识
  * @return  {category,xAxis,series,data}
  */
-export const getGroupSeriesObj = (originData, name) => {
+export const getGroupSeriesObj = (
+  originData: any,
+  name: any
+) => {
   // 非空判断处理
   if (isEmptyData(originData)) {
     return EMPTY_DATA
@@ -273,7 +276,7 @@ export const getGroupSeriesObj = (originData, name) => {
  * @return
  */
 export const getNormalSeriesObj = (
-  originData,
+  originData: any,
   __chartName__: ChartTypes
 ) => {
   const category: any = []
@@ -288,14 +291,14 @@ export const getNormalSeriesObj = (
         xAxisArr.push(it.name)
       }
     })
-    data = data.filter((d) => {
+    data = data.filter((d: any) => {
       return d['xAxis'] === undefined
     })
   }
 
-  function hasDataVal(xAxis, data) {
+  function hasDataVal(xAxis: any, data: any) {
     let v = ''
-    data.forEach((d) => {
+    data.forEach((d: any) => {
       if (d.name === xAxis) {
         v = d
       }
@@ -307,7 +310,7 @@ export const getNormalSeriesObj = (
   }
   if (Array.isArray(data)) {
     if (hasxAxis) {
-      datas = xAxisArr.map((xAxis) => {
+      datas = xAxisArr.map((xAxis: any) => {
         category.push(xAxis)
         const it: any = hasDataVal(xAxis, data)
         const obj: any = {
@@ -339,7 +342,7 @@ export const getNormalSeriesObj = (
   }
 }
 
-export const getCategory = (originData) => {
+export const getCategory = (originData: any) => {
   // 转换成lodash chains
   const _chain = chain(originData)
   // 取分类数据集合

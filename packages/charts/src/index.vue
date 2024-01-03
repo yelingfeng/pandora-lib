@@ -81,7 +81,8 @@ export default defineComponent({
       loading,
       loadingOptions,
       data,
-      options,
+      chartType,
+      subChartType,
     } = toRefs(props)
 
     const realTheme = computed(
@@ -131,7 +132,11 @@ export default defineComponent({
       function commit() {
         const opt = option || realOption.value
         if (opt) {
-          const newopt = build(data.value)
+          const newopt = build(
+            data.value,
+            chartType.value,
+            subChartType.value
+          )
           instance.setOption(
             newopt,
             realUpdateOptions.value
@@ -226,7 +231,9 @@ export default defineComponent({
 
     watch(data, function (newval, oldval) {
       if (newval && newval.length) {
-        setOption(build(newval))
+        setOption(
+          build(newval, chartType.value, subChartType.value)
+        )
       }
     })
 

@@ -1,69 +1,42 @@
 <template>
   <div h-full uno-padding-20>
     <el-row :gutter="24">
-      <el-col :span="10">
+      <el-col :span="12">
         <el-card
           class="box-card"
           shadow="hover"
-          header="属性"
-        >
-          <el-form :model="form" label-width="150px">
-            <!-- <el-form-item label="主题：">
-              <el-radio-group v-model="form.theme">
-                <el-radio-button
-                  v-for="item in themeOptions"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-radio-group>
-            </el-form-item>
-            <el-form-item label="autoresize">
-              <el-switch v-model="form.autoresize" />
-            </el-form-item>
-            <el-form-item label="变化width">
-              <el-slider
-                v-model="_width"
-                :max="800"
-                :min="400"
-              />
-            </el-form-item>
-            <el-form-item label="开启loading">
-              <el-button
-                :disabled="Loading"
-                @click="loadingRefresh"
-                >点我</el-button
-              >
-            </el-form-item>
-            <el-form-item label="轮播">
-              <el-button
-                type="primary"
-                @click="startActions"
-                >开启</el-button
-              >
-              <el-button type="primary" @click="stopActions"
-                >关闭</el-button
-              >
-            </el-form-item> -->
-          </el-form>
-        </el-card>
-      </el-col>
-      <el-col :span="14">
-        <el-card
-          class="box-card"
-          shadow="hover"
-          header="基础Charts"
+          header="Pie01"
         >
           <div class="box-center">
             <Charts
               ref="charts"
-              :options="opt"
               :data="echartData"
+              chart-type="pie"
+              :options="opt"
+              sub-chart-type="pie01"
               @zr:click="handleZrClick"
               @click="handleClick"
             />
-          </div> </el-card
-      ></el-col>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card
+          class="box-card"
+          shadow="hover"
+          header="Pie02"
+        >
+          <div class="box-center">
+            <Charts
+              ref="charts2"
+              :data="echartData2"
+              :options="opt"
+              chart-type="pie"
+              sub-chart-type="pie02"
+            />
+          </div>
+        </el-card>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -78,9 +51,9 @@ import {
   onBeforeUnmount,
   onMounted,
 } from 'vue-demi'
-import { registerTheme } from 'echarts/core'
 let opt: any = {}
 const charts: any = ref(null)
+const charts2: any = ref(null)
 
 const form: any = reactive({
   theme: 'ovilia-green',
@@ -136,6 +109,129 @@ const echartData = [
     name: 'J类',
     value: '2420',
   },
+]
+// {
+//   legend: {
+//     type: 'scroll',
+//     orient: 'vertical',
+//     right: 10,
+//     top: 'center',
+//     bottom: 20,
+//     itemWidth: 8,
+//     itemHeight: 8,
+//     align: 'left',
+//     textStyle: {
+//       fontSize: 12,
+//       padding: [0, 0, 0, 5],
+//       rich: {
+//         value: {
+//           fontSize: 14,
+//           fontWeight: 400,
+//         },
+//       },
+//     },
+//     data: ['北京分中心', '辽宁分中心'],
+//   },
+//   label: {
+//     show: true,
+//     position: 'center',
+//     rich: {
+//       a: {
+//         fontWeight: 700,
+//         fontSize: 22,
+//         lineHeight: 20,
+//       },
+//       b: {
+//         fontWeight: 700,
+//         fontSize: 16,
+//         lineHeight: 24,
+//       },
+//     },
+//   },
+//   series: [
+//     {
+//       name: '',
+//       type: 'pie',
+//       roseType: false,
+//       center: ['35%', '50%'],
+//       radius: ['45%', '60%'],
+//       avoidLabelOverlap: true,
+//       label: {
+//         normal: {
+//           show: false,
+//           position: 'center',
+//         },
+//         emphasis: {
+//           show: true,
+//           textStyle: {
+//             color: '#333',
+//             fontSize: 12,
+//           },
+//         },
+//       },
+//       selected: {},
+//       data: [
+//         {
+//           name: '北京分中心',
+//           value: 5,
+//           itemStyle: {
+//             color: {
+//               colorStops: [
+//                 {
+//                   offset: 0,
+//                   color: 'rgba(103,200,255,1)',
+//                 },
+//                 {
+//                   offset: 1,
+//                   color: 'rgba(103,200,255,0.5)',
+//                 },
+//               ],
+//               x: 1,
+//               y: 1,
+//               x2: 0,
+//               y2: 0,
+//               type: 'linear',
+//               global: false,
+//             },
+//           },
+//         },
+//         {
+//           name: '辽宁分中心',
+//           value: 16,
+//           itemStyle: {
+//             color: {
+//               colorStops: [
+//                 {
+//                   offset: 0,
+//                   color: 'rgba(255,102,102,1)',
+//                 },
+//                 {
+//                   offset: 1,
+//                   color: 'rgba(255,102,102,0.5)',
+//                 },
+//               ],
+//               x: 1,
+//               y: 1,
+//               x2: 0,
+//               y2: 0,
+//               type: 'linear',
+//               global: false,
+//             },
+//           },
+//         },
+//       ],
+//     },
+//   ],
+// }
+
+const echartData2 = [
+  { value: '2879', name: '北京分中心' },
+  { value: '806', name: '上海分中心' },
+  { value: '723', name: '天津分中心' },
+  { value: '546', name: '宁夏分中心' },
+  { value: '454', name: '青岛分中心' },
+  { value: '344', name: '沈阳分中心' },
+  { value: '244', name: '新疆分中心' },
 ]
 
 onMounted(() => {})
